@@ -40,20 +40,21 @@ public class Practice11PieChartView extends View {
         //常规画法
         paint.setStyle(Paint.Style.FILL);
         paint.setColor(Color.BLACK);
-        canvas.drawArc(firstRectF, 285, 65, true, paint);
-        int startAngle = 0;
-        int sweepAngle = 35;
+        canvas.drawArc(firstRectF, -180, 150, true, paint);
+        int startAngle = -30;
+        int sweepAngle = 30;
         for (int i = 0; i < colors.length; i++) {
             paint.setColor(colors[i]);
-            startAngle = startAngle + i * 40;
             canvas.drawArc(rectF, startAngle, sweepAngle, true, paint);
+
+            startAngle = startAngle + 35;
         }
     }
 
     private void init() {
         paint = new Paint();
-        firstRectF = new RectF(50, 50, 450, 450);
+        firstRectF = new RectF(90, 90, 490, 490);
         rectF = new RectF(100, 100, 500, 500);
-        colors = new int[]{Color.GREEN, Color.YELLOW, Color.CYAN, Color.GRAY, Color.RED, Color.BLUE, Color.MAGENTA};
+        colors = new int[]{Color.YELLOW, Color.CYAN, Color.GRAY, Color.RED, Color.BLUE, Color.MAGENTA};
     }
 }
