@@ -11,8 +11,13 @@ import android.view.View;
 
 public class Practice8DrawArcView extends View {
 
-    private Paint paint;
-    private RectF rectF;
+    private Paint paint = new Paint();
+    private RectF rectF = new RectF(100, 50, 300, 250);
+
+    {
+        paint.setStyle(Paint.Style.FILL);
+        paint.setColor(Color.CYAN);
+    }
 
     public Practice8DrawArcView(Context context) {
         super(context);
@@ -31,18 +36,12 @@ public class Practice8DrawArcView extends View {
         super.onDraw(canvas);
 
 //        练习内容：使用 canvas.drawArc() 方法画弧形和扇形
-        paint = new Paint();
-        rectF = new RectF(100, 50, 300, 250);
-
-        paint.setStyle(Paint.Style.FILL);
-        paint.setColor(Color.CYAN);
         canvas.drawArc(rectF, -90, 60, true, paint);
 
         paint.setColor(Color.YELLOW);
         canvas.drawArc(rectF, 40, 100, false, paint);
 
         paint.setStyle(Paint.Style.STROKE);
-
         paint.setColor(Color.GREEN);
         canvas.drawArc(rectF, 150, 30, false, paint);
 

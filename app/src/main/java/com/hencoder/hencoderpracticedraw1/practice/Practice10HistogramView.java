@@ -11,19 +11,22 @@ import android.view.View;
 
 public class Practice10HistogramView extends View {
 
-    private Paint paint;
-    private Paint textPaint;
+    private Paint paint = new Paint();
+    private Paint textPaint = new Paint();
+    private Paint linePaint = new Paint();
+    private static final int LINE_SUM = 5;
 
-    public Practice10HistogramView(Context context) {
-        super(context);
-    }
-
-    private void init() {
-        paint = new Paint();
-        textPaint = new Paint();
+    {
         textPaint.setColor(Color.WHITE);
         textPaint.setTextSize(30);
         textPaint.setStrokeWidth(10);
+        paint.setColor(Color.YELLOW);
+        linePaint.setColor(Color.BLACK);
+        linePaint.setStrokeWidth(5);
+    }
+
+    public Practice10HistogramView(Context context) {
+        super(context);
     }
 
     public Practice10HistogramView(Context context, @Nullable AttributeSet attrs) {
@@ -35,38 +38,28 @@ public class Practice10HistogramView extends View {
     }
 
     @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-    }
-
-    @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.drawColor(Color.DKGRAY);
 
 //        综合练习
 //        练习内容：使用各种 Canvas.drawXXX() 方法画直方图
-        init();
-        paint.setColor(Color.YELLOW);
         int left = 100;
         int top = 100;
         int right = 180;
         int bottom = 700;
         int textBottom = bottom + 30;
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < LINE_SUM; i++) {
             RectF rectF = new RectF(left, top, right, bottom);
-            canvas.drawText(i + 1 + "月", left+10, textBottom, textPaint);
+            canvas.drawText(i + 1 + "月", left + 10, textBottom, textPaint);
             left = left + 120;
             top = top + 50;
             right = right + 120;
             canvas.drawRect(rectF, paint);
         }
 
-        paint.setColor(Color.BLACK);
-        paint.setStrokeWidth(5);
-        canvas.drawLine(50, 50, 50, 700, paint);
-        canvas.drawLine(50, 700, 700, 700, paint);
-
+        canvas.drawLine(50, 50, 50, 700, linePaint);
+        canvas.drawLine(50, 700, 700, 700, linePaint);
 
     }
 }

@@ -11,11 +11,16 @@ import android.view.View;
 
 public class Practice11PieChartView extends View {
 
-    private Paint paint;
-    private RectF rectF;
-    private RectF firstRectF;
-    private int[] colors;
+    private Paint paint = new Paint();
+    private RectF rectF = new RectF(100, 100, 500, 500);
+    private RectF firstRectF = new RectF(90, 90, 490, 490);
+    private int[] colors = new int[]{Color.YELLOW, Color.CYAN, Color.GRAY, Color.RED, Color.BLUE, Color.MAGENTA};
 
+    {
+        paint.setStyle(Paint.Style.FILL);
+        paint.setColor(Color.BLACK);
+    }
+    
     public Practice11PieChartView(Context context) {
         super(context);
     }
@@ -35,11 +40,7 @@ public class Practice11PieChartView extends View {
 //        综合练习
 //        练习内容：使用各种 Canvas.drawXXX() 方法画饼图
 
-        init();
-
         //常规画法
-        paint.setStyle(Paint.Style.FILL);
-        paint.setColor(Color.BLACK);
         canvas.drawArc(firstRectF, -180, 150, true, paint);
         int startAngle = -30;
         int sweepAngle = 30;
@@ -51,10 +52,4 @@ public class Practice11PieChartView extends View {
         }
     }
 
-    private void init() {
-        paint = new Paint();
-        firstRectF = new RectF(90, 90, 490, 490);
-        rectF = new RectF(100, 100, 500, 500);
-        colors = new int[]{Color.YELLOW, Color.CYAN, Color.GRAY, Color.RED, Color.BLUE, Color.MAGENTA};
-    }
 }

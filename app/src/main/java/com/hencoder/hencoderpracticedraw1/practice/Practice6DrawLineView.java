@@ -9,7 +9,11 @@ import android.view.View;
 
 public class Practice6DrawLineView extends View {
 
-    private Paint paint;
+    private Paint paint = new Paint();
+
+    {
+        paint.setStrokeWidth(20);
+    }
 
     public Practice6DrawLineView(Context context) {
         super(context);
@@ -28,8 +32,6 @@ public class Practice6DrawLineView extends View {
         super.onDraw(canvas);
 
 //        练习内容：使用 canvas.drawLine() 方法画直线
-        paint = new Paint();
-        paint.setStrokeWidth(20);
         canvas.drawLine(100, 100, 300, 300, paint);
     }
 }
